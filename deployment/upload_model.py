@@ -46,7 +46,6 @@ from google.cloud import aiplatform
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
-# ── Configuration ─────────────────────────────────────────────
 # Update these to match YOUR Artifact Registry repository
 _GCSFUSE_IMAGE_URI = os.getenv(
     "IMAGE_URI",
@@ -57,7 +56,6 @@ _GCSFUSE_IMAGE_URI = os.getenv(
 _GCP_PROJECT = os.getenv("GCP_PROJECT", "YOUR_PROJECT")
 _GCP_REGION = os.getenv("GCP_REGION", "us-central1")
 
-# ── Resource Labels (GCP governance) ─────────────────────────
 _RESOURCE_LABELS = {
     "component": "slm-serving",
     "model": "gemma-4-27b-a4b",
