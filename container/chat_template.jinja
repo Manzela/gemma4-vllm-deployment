@@ -1,0 +1,19 @@
+{{- bos_token -}}
+{%- for message in messages -%}
+    {%- if message['role'] == 'system' or message['role'] == 'developer' -%}
+        {{- '<|turn>system\n' -}}
+        {{- message['content'] | trim -}}
+        {{- '<turn|>\n' -}}
+    {%- elif message['role'] == 'user' -%}
+        {{- '<|turn>user\n' -}}
+        {{- message['content'] | trim -}}
+        {{- '<turn|>\n' -}}
+    {%- elif message['role'] == 'assistant' or message['role'] == 'model' -%}
+        {{- '<|turn>model\n' -}}
+        {{- message['content'] | trim -}}
+        {{- '<turn|>\n' -}}
+    {%- endif -%}
+{%- endfor -%}
+{%- if add_generation_prompt -%}
+    {{- '<|turn>model\n' -}}
+{%- endif -%}
